@@ -1,0 +1,16 @@
+@font-face {
+  font-family: '0xProto';
+  src: url('/static/0xProto-Regular.woff2');
+  font-weight: 125 800;
+}
+
+/* Add styles for h4, h5, h6, etc., adjusting the font-weight and font-stretch as needed */
+@font-face {
+    font-family: 'Soria';
+    src: url('/static/soria-font.ttf');
+    letter-spacing: 0.75px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
