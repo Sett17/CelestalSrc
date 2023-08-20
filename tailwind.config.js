@@ -7,6 +7,6 @@ module.exports = {
                 'serif': ['Soria', 'ui-serif', 'Georgia'],
                 'mono': ['"0xProto"', 'ui-monospace', 'SFMono-Regular'],
             }
-        }
+        },
     }
 }
