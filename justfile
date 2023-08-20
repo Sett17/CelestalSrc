@@ -34,7 +34,7 @@ alias r := run-backend
 
 # Run backend continuously
 watch:
-    reflex -r '(^{{FRONTEND_DIR}}/static)|(\.go$$)' -s just run-backend
+    reflex -r '(^{{FRONTEND_DIR}}/static)|(\.go$$)' -s just c run-backend
 alias w := watch
 
 # Clean
