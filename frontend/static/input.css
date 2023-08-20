@@ -8,7 +8,6 @@
 @font-face {
     font-family: 'Soria';
     src: url('/static/soria-font.ttf');
-    letter-spacing: 0.75px;
 }
 
 @tailwind base;
