@@ -12,6 +12,8 @@ import (
 func main() {
     log.Info("✨ Starting CelestralSrc ✨")
 	r := gin.New()
+    r.Use(gin.Logger())
+    r.Use(gin.Recovery())
 
 	r.GET("/", func(c *gin.Context) {
         c.File("./static/index.html")
