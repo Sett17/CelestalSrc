@@ -10,15 +10,19 @@
     <title>CelestralSrc</title>
 </head>
 
-<body class="bg-gray-950 font-mono text-zinc-400">
+<body class="bg-gray-950 p-4 font-mono text-stone-400">
     <h1 class="font-serif text-7xl text-yellow-400">✨CelestralSrc✨</h1>
 
-    <p>krank man</p>
-
-    <div hx-get="/static/dikka" hx-trigger="click once">
+    <div hx-get="/static/dikka" hx-trigger="click once" class="cursor-pointer">
         [Click me]
     </div>
-    <script src="static/main.wasm"></script>
+    <script src="static/wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("static/main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
 </body>
 
 </html>
