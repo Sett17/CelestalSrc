@@ -1,6 +1,8 @@
 package main
 
 import (
+	"celestralsrc/backend/internal/logger"
+
 	"github.com/charmbracelet/log"
 	"github.com/gin-gonic/gin"
 )
@@ -10,16 +12,23 @@ import (
 //go:generate cp ../../../frontend/dist/main.wasm static/
 
 func main() {
-    log.Info("✨ Starting CelestralSrc ✨")
+	log.Info("✨ Starting CelestralSrc ✨")
 	r := gin.New()
-    r.Use(gin.Logger())
-    r.Use(gin.Recovery())
+	r.Use(gin.LoggerWithConfig(gin.LoggerConfig{
+		Formatter: logger.Formatter,
+		Output:    gin.DefaultWriter,
+	}))
+
+	r.Use(gin.Recovery())
 
 	r.GET("/", func(c *gin.Context) {
-        c.File("./static/index.html")
+		c.File("./static/index.html")
 	})
+	r.Static("/static", "./static")
 
-    r.Static("/static", "./static")
+	r.POST("/dikka", func(c *gin.Context) {
+		c.String(200, "dikka cool")
+	})
 
 	r.Run(":8080")
 }
