@@ -5,6 +5,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/gin-gonic/gin"
+    "github.com/gin-contrib/gzip"
 )
 
 //go:generate mkdir -p static
@@ -18,8 +19,8 @@ func main() {
 		Formatter: logger.Formatter,
 		Output:    gin.DefaultWriter,
 	}))
-
 	r.Use(gin.Recovery())
+    r.Use(gzip.Gzip(gzip.DefaultCompression))
 
 	r.GET("/", func(c *gin.Context) {
 		c.File("./static/index.html")
