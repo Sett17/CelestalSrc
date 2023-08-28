@@ -20,7 +20,7 @@ chrome:
     @google-chrome --remote-debugging-port={{CHROME_DEV_PORT}} --user-data-dir=/tmp/chrome-dev-profile --window-size=1920x1080 --new-window "http://localhost:8080" &> /dev/null &
 
 #Reload chrome webpage
-# requires websocat (cargo binstall websocat)
+# requires websocat (cargo binstall websocat) and jq (https://jqlang.github.io/jq/)
 reload-chrome:
     #!/usr/bin/env bash
     {
