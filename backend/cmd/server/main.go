@@ -1,11 +1,12 @@
 package main
 
 import (
+	"celestralsrc/backend/internal/api"
 	"celestralsrc/backend/internal/logger"
 
 	"github.com/charmbracelet/log"
+	// "github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
-    "github.com/gin-contrib/gzip"
 )
 
 //go:generate mkdir -p static
@@ -20,16 +21,14 @@ func main() {
 		Output:    gin.DefaultWriter,
 	}))
 	r.Use(gin.Recovery())
-    r.Use(gzip.Gzip(gzip.DefaultCompression))
+    // r.Use(gzip.Gzip(gzip.DefaultCompression))
 
 	r.GET("/", func(c *gin.Context) {
 		c.File("./static/index.html")
 	})
 	r.Static("/static", "./static")
 
-	r.POST("/dikka", func(c *gin.Context) {
-		c.String(200, "dikka cool")
-	})
+    api.SetRoutes(r)
 
 	r.Run(":8080")
 }
