@@ -1,0 +1,4 @@
+frontend/dist
+backend/cmd/server/static
+backend/bin
+frontend/static/style.css

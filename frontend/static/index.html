@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+    <title>CelestralSrc</title>
+</head>
+
+<body class="bg-gray-950 p-4 font-mono text-stone-400">
+    <h1 class="font-serif text-7xl tracking-wider text-yellow-400">✨CelestralSrc✨</h1>
+
+    <div hx-post="/dikka" hx-trigger="click once" class="cursor-pointer">
+        [Click me]
+    </div>
+    <script src="static/wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("static/main.wasm"), go.importObject).then((result) => {
+            go.run(result.instance);
+        });
+    </script>
+</body>
+
+</html>
