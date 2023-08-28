@@ -4,7 +4,6 @@ package main
 
 import (
 	"celestralsrc/frontend/internal"
-	"fmt"
 	"image/color"
 	"math"
 	"math/rand"
@@ -24,10 +23,8 @@ var height float64
 var stars []*internal.Star
 
 func main() {
-	fmt.Println("Hello from WebAssembly!")
-
 	cvs, _ = canvas.NewCanvas2d(false)
-	cvs.Create(int(js.Global().Get("innerWidth").Float()*0.75), int(js.Global().Get("innerHeight").Float()*0.75)) // Make Canvas 750% of window size.  For testing rendering canvas smaller than full windows
+	cvs.Create(int(js.Global().Get("innerWidth").Float()*0.75), int(js.Global().Get("innerHeight").Float()*0.75))
 
 	height = float64(cvs.Height())
 	width = float64(cvs.Width())
@@ -37,7 +34,7 @@ func main() {
     for i := 0; i < N; i++ {
         x := float64(cvs.Width()) * rand.Float64()
         y := float64(cvs.Height()) * rand.Float64()
-        size := rand.Float64()*5
+        size := rand.Float64()*1
         brightness := 0.2 + rand.Float64()*0.8
         stars = append(stars, internal.NewStar(x, y, size, brightness))
     }
@@ -55,7 +52,6 @@ func Render(gc *draw2dimg.GraphicContext) bool {
 	gc.SetFillColor(color.RGBA{0xaa, 0x77, 0xff, 0x00}) //background with opacity gives cool effect; TODO change back
 	gc.Clear()
 
-    //render all the stars
     for _, star := range stars {
         star.Draw(gc)
     }
