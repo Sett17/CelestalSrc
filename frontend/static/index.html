@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="static/style.css">
 
     <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+    <script async src="static/wasm_exec.js"></script>
     <title>CelestralSrc</title>
 </head>
 
-<body class="bg-gray-950 font-mono text-stone-400 flex flex-col w-full h-full">
-    <div class="flex flex-row justify-around w-full items-center pt-3">
+<body class="flex h-full w-full flex-col bg-gray-950 font-mono text-stone-400">
+    <div class="flex w-full flex-row items-center justify-around pt-3">
         <a href="/">
-            <h1 class="font-serif text-yellow-400 text-4xl cursor-pointer">✨CelestalSrc</h1>
+            <h1 class="cursor-pointer font-serif text-4xl text-yellow-400">✨CelestalSrc</h1>
         </a>
     </div>
-    <div id="content" class="flex flex-col justify-center items-center grow">
+    <div id="content" class="flex grow flex-col items-center justify-center">
         <p class="mb-4">This is some description text. Please enter valid input to proceed.</p>
         <div class="mb-4">
             <input type="text" id="inputField" class="" placeholder="GitHub URL">
