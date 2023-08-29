@@ -25,7 +25,7 @@ reload-chrome:
     #!/usr/bin/env bash
     {
         sleep 2
-        echo '{"id":1,"method":"Page.reload","params":{}}' | websocat $(curl -s http://localhost:9222/json | jq -r '.[0].webSocketDebuggerUrl')
+        echo '{"id":1,"method":"Page.reload","params":{"ignoreCache":true}}' | websocat $(curl -s http://localhost:9222/json | jq -r '.[0].webSocketDebuggerUrl')
     } &> /dev/null || true
     echo -e "\e[32mTriggered reload\e[0m"
     exit 0
